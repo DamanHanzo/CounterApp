@@ -1,6 +1,6 @@
 # Basic Counter App with .NET Core MVC
 
-This is build as a way for me to get myself familiar with .NET Core.
+This app is build as a way for me to get myself familiar with .NET Core.
 
 # Requirements
 
