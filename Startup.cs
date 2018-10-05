@@ -35,13 +35,11 @@ namespace CounterApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDistributedMemoryCache();
-            services.AddSession(options => options.IdleTimeout = TimeSpan.FromSeconds(10));
-
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromSeconds(10));//NOTE: This made testing easier. 
+                                                                                          //Please free to ucomment this line, and comment the next line.
+            //services.AddSession();
             services.AddDbContext<CounterContext>
             (options => options.UseSqlServer(this.Configuration.GetConnectionString("appDbConnection")));
-
-            // services.AddHttpContextAccessor();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
