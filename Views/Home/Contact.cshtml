@@ -1,17 +1,54 @@
 ﻿@{
     ViewData["Title"] = "Contact";
 }
+@model CounterApp.Models.Counter
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
 
 <address>
-    One Microsoft Way<br />
+    Billy Bill Way<br />
     Redmond, WA 98052-6399<br />
     <abbr title="Phone">P:</abbr>
     425.555.0100
 </address>
 
 <address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    <strong>Support:</strong> <a href="mailto:ytho@youthought.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:huh@youthought.com">Marketing@example.com</a>
 </address>
+
+<div class="row main-body" >
+    <div class="col-md-3">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+             since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+             five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+              including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="col-md-3">
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+             since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+             five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+              including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="col-md-3">
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+             since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+             five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+              including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="col-md-3">
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+             since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only 
+             five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker 
+              including versions of Lorem Ipsum.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 counter-div">
+        <p>@Model.count Totatl Visits</p>
+    </div>
+</div>

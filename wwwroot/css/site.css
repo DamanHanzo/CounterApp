@@ -35,3 +35,17 @@ body {
         display: none;
     }
 }
+
+.main-body {
+    padding-top: 5%;
+}
+
+.counter-div {
+    text-align:center;
+    padding-top: 10%;
+}
+
+.counter-div p {
+    font-size: 18px;
+    font-weight: bold;
+}
