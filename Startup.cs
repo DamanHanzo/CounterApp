@@ -35,7 +35,7 @@ namespace CounterApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDistributedMemoryCache();
-            services.AddSession();
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromSeconds(10));
 
             services.AddDbContext<CounterContext>
             (options => options.UseSqlServer(this.Configuration.GetConnectionString("appDbConnection")));
@@ -47,8 +47,7 @@ namespace CounterApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseSession();
-            app.UseMiddleware(typeof(VisitorCounterMiddleware));
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,6 +61,8 @@ namespace CounterApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
+            app.UseMiddleware(typeof(VisitorCounterMiddleware));
 
             app.UseMvc(routes =>
             {

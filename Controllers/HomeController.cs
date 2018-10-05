@@ -40,9 +40,11 @@ namespace CounterApp.Controllers
             return View();
         }
         private Counter adjustCount() {
-            Counter counter = new Counter();
+            Counter counter = new Counter();if(HttpContext.Session.GetString(_sessionKey).Equals("Y"))
             if(HttpContext.Session.GetString(_sessionKey).Equals("Y")) {
                 counter.count = _context.Counters.Count() + 1;
+                _context.Add(counter);
+                _context.SaveChanges();
             }
             counter = _context.Counters.LastOrDefault();    
             return counter; 

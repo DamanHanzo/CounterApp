@@ -20,6 +20,7 @@ public class VisitorCounterMiddleware
     public async Task Invoke(HttpContext context)
     {
       string visitorId = context.Request.Cookies["VisitorId"];
+    //   context.Session.Clear();
       if (visitorId == null)
       {
          context.Session.SetString("newSession", "Y");
@@ -29,9 +30,9 @@ public class VisitorCounterMiddleware
                     HttpOnly = true,
                     Secure = false,
             });
+       } else {
+           context.Session.SetString("newSession", "N");
        }
-       context.Session.SetString("newSession", "N");
-
       await _requestDelegate(context);
     }
 }
