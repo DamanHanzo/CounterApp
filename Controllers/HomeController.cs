@@ -30,14 +30,14 @@ namespace CounterApp.Controllers
         {
             Counter counter = adjustCount(); 
             ViewData["Message"] = "Your application description page.";
-            return View();
+            return View(counter);
         }
 
         public IActionResult Contact()
         {
             Counter counter = adjustCount();
             ViewData["Message"] = "Your contact page.";
-            return View();
+            return View(counter);
         }
         private Counter adjustCount() {
             Counter counter = new Counter();if(HttpContext.Session.GetString(_sessionKey).Equals("Y"))
