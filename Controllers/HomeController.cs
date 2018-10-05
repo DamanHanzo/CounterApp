@@ -5,39 +5,47 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CounterApp.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace CounterApp.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly CounterContext _context;
+        private readonly static string _sessionKey = "newSession";
+
+        public HomeController(CounterContext counterContext) 
         {
-            return View();
+            _context = counterContext;
+        }
+        
+        public IActionResult Index()
+        { 
+            Counter counter = adjustCount(); 
+            return View(counter);
         }
 
         public IActionResult About()
         {
+            Counter counter = adjustCount(); 
             ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
         public IActionResult Contact()
         {
+            Counter counter = adjustCount();
             ViewData["Message"] = "Your contact page.";
-
             return View();
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        private Counter adjustCount() {
+            Counter counter = new Counter();
+            if(HttpContext.Session.GetString(_sessionKey).Equals("Y")) {
+                counter.count = _context.Counters.Count() + 1;
+            }
+            counter = _context.Counters.LastOrDefault();    
+            return counter; 
         }
     }
 }
