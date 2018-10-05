@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CounterApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CounterApp
 {
@@ -33,6 +35,10 @@ namespace CounterApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<CounterContext>
+            (options => options.UseSqlite(this.Configuration.GetConnectionString("appDbConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
