@@ -7,6 +7,13 @@ namespace CounterApp.Models {
             : base(options)
         {}
 
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Counter>()
+        //         .Property(p => p.id)
+        //         .ValueGeneratedOnAdd();
+        // }
+
         public DbSet<Counter> Counters {get; set;}
     }
 }
