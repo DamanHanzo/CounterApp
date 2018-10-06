@@ -1,8 +1,6 @@
 # Basic Counter App with .NET Core MVC
 
-This app is build as a way for me to get myself familiar with .NET Core.
-
-# Requirements
+## Requirements
 
 - The counter should not increment on every page/view - the counter increment must be session unique
 
@@ -11,3 +9,7 @@ This app is build as a way for me to get myself familiar with .NET Core.
 - The counter should be centered at the bottom with appropriate spacing between last piece content on the page, in a bold 18 px font.
 
 - The counter should be created and stored using Entity Framework code first database implementation using LocalDB instance of SQL Server.
+
+## TODOs
+
+All the requirements have been successfully implemented.
