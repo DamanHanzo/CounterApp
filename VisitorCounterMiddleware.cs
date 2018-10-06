@@ -20,10 +20,9 @@ public class VisitorCounterMiddleware
     public async Task Invoke(HttpContext context)
     {
       string visitorId = context.Request.Cookies["VisitorId"];
-    //   context.Session.Clear();
       if (visitorId == null)
       {
-         context.Session.SetString("newSession", "Y");
+         context.Items.Add("newSession", "Y");
          context.Response.Cookies.Append("VisitorId", Guid.NewGuid().ToString(), new CookieOptions()
             {
                     Path = "/",
@@ -31,7 +30,7 @@ public class VisitorCounterMiddleware
                     Secure = false,
             });
        } else {
-           context.Session.SetString("newSession", "N");
+           context.Items.Add("newSession", "N");
        }
       await _requestDelegate(context);
     }
