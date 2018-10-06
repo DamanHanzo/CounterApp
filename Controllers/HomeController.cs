@@ -13,7 +13,7 @@ namespace CounterApp.Controllers
     public class HomeController : Controller
     {
         private readonly CounterContext _context;
-        private readonly static string _sessionKey = "newSession";
+        private readonly static string _itemName = "newSession";
 
         public HomeController(CounterContext counterContext) 
         {
@@ -40,8 +40,8 @@ namespace CounterApp.Controllers
             return View(counter);
         }
         private Counter adjustCount() {
-            Counter counter = new Counter();if(HttpContext.Session.GetString(_sessionKey).Equals("Y"))
-            if(HttpContext.Session.GetString(_sessionKey).Equals("Y")) {
+            Counter counter = new Counter();
+            if(HttpContext.Items[_itemName].ToString().Equals("Y")) {
                 counter.count = _context.Counters.Count() + 1;
                 _context.Add(counter);
                 _context.SaveChanges();
